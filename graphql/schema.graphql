@@ -4,7 +4,14 @@ type User {
     email: String!
 }
 
+type TblComments {
+    id: ID!
+    comment_title: String!
+    comment_text: String!
+}
+
 type Query {
     user(id: ID! @eq): User @find
     users: [User!]! @all
+    comments: [TblComments!]! @all
 }
