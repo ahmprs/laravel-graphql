@@ -19,6 +19,7 @@ class CreateArticlesTable extends Migration
             $table->text('title');
             $table->text('content');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

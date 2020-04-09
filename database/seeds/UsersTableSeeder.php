@@ -1,6 +1,5 @@
 <?php
 
-use App\User;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -10,23 +9,22 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\User::truncate();
-
         $faker = \Faker\Factory::create();
         $password = bcrypt('secret');
 
-        \App\User::create([
-            'name'     => $faker->name,
-            'email'    => 'graphql@test.com',
-            'password' => $password,
-        ]);
-
         for ($i = 0; $i < 10; ++$i) {
-            \App\User::create([
-                'name'     => $faker->name,
-                'email'    => $faker->email,
+            DB::table('users')->insert([
+                'id' => null,
+                'name' => $faker->name,
+                'email' => $faker->email,
+                'email_verified_at' => '2020-04-01 00:00:00',
                 'password' => $password,
+                'api_token' => '',
+                'remember_token' => '',
+                'created_at' => '2020-04-01 00:00:00',
+                'updated_at' => '2020-04-01 00:00:00',
             ]);
+
         }
     }
 }

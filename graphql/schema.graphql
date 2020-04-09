@@ -2,6 +2,7 @@ type User {
     id: ID!
     name: String!
     email: String!
+    articles: [Article!]! @all
 }
 
 type TblComments {
@@ -14,4 +15,11 @@ type Query {
     user(id: ID! @eq): User @find
     users: [User!]! @all
     comments: [TblComments!]! @all
+    articles: [Article!]! @all
+}
+
+type Article {
+    id: ID!
+    title: String!
+    content: String!
 }
